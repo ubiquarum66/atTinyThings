@@ -1,1 +1,6 @@
-# local readme.md file to create structure
+# Installment of atmel VisualStudio prject with empty source files
+
+
+# Remarks what parts have to be implemented
+
+

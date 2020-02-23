@@ -1,5 +1,7 @@
 # History and Repository of Project Mechanical Wave by a Colleague and me
 
+![](product.png)
+
 ## Folder Design
 
 How all come to existence and evolved on paper

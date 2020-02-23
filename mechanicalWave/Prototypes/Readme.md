@@ -16,6 +16,14 @@ to the servo it ill straighten the lever during it's turning and thus creating a
 ![](doppelschwinge.png)
 
 
+## Backgorund Picture
+
+To hint to the juggling hobby we decided to create a clown's picture as background and 
+provide the rotating juggling objects with a running light chain of 10 LED's.
+
+
+![](clown_design.png)
+
 ## Running LED Chain:
 
 10 wires coming from decade counter, always only one
@@ -24,6 +32,7 @@ necessary Resistor. Stabilizing concept by old CD.
 
 
 ![](led_lichtkreis.png)
+
 
 ## arduino atttiny setup to develop software
 
