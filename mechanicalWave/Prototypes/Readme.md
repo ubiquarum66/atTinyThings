@@ -44,9 +44,12 @@ Studio.
 
 ![](aufbau.png)
 
-## together with a small wooden car, a bunch of drinking straws, and glue a first prototype came into play:
+## First Mockup:
+
+together with a small wooden car, a bunch of drinking straws, a yellow small gearbox engine,
+and glue a first prototype came into play:
 
 
 ![](car.png)
-![](prototype.png)
+![](all_together_crude.png)
 
