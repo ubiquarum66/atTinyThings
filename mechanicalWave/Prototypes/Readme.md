@@ -10,7 +10,9 @@ constructors simplets choice could be the (german) Doppelschwinge;
 + 3 passiv axles and containig 
 + one driving torque (Servo).
 
-If the passive, pulling, branch of the two side branches is a little bit longer than the one connected 
+ test bech control board is just a piece of wood, holding the direction switch, and the two potentiometers, and for the short
+ prototype board a Control Unit was made out of colored wood.
+ If the passive, pulling, branch of the two side branches is a little bit longer than the one connected 
 to the servo it ill straighten the lever during it's turning and thus creating a nice linear movement.
 
 ![](doppelschwinge.png)
@@ -36,8 +38,15 @@ necessary Resistor. Stabilizing concept by old CD.
 
 ## arduino atttiny setup to develop software
 
-Arduina is only providing power, as programming is 
+Arduino is only providing power, as programming is 
 done via a mkII compatible ISP Interface to Atmel 
 Studio.
 
 ![](aufbau.png)
+
+## together with a small wooden car, a bunch of drinking straws, and glue a first prototype came into play:
+
+
+![](car.png)
+![](prototype.png)
+
