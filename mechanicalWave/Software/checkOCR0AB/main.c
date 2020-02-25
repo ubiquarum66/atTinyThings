@@ -21,6 +21,11 @@
 
 // delay for main lop to trigger the led chain
 void Delay(unsigned int deli);
+// pwm interface for fast pwm init and handling
+static void pwm_init(void);
+static void pwm_set_frequency(uint32_t N);
+static void pwm_set_duty(uint8_t duty);
+static void pwm_stop(void);
 // setup ADC for two inputs: speed and servo
 void initADC();
 // helper: read and average 2 ADC inputs
@@ -115,10 +120,18 @@ int main(void)
 	/* setup */
 	// setup pwm mode to create engine pwm
 	// setup AD Converters...
+	pwm_init();
 	initADC();
 	// read ADSC channels for the first time
 	// set PWM of engine
 	// set pwm parts of servo
+    pwm_set_frequency(N_8);
+	firstdutyEngineAD = (uint8_t)read_ADC10(3);
+	firstdutyServoAD = (uint8_t)read_ADC10(2);
+	pwm_set_duty(firstdutyEngineAD);  //enters fast PWM duty directly
+	setServoDuties(firstdutyServoAD,&c, &flag);
+	ton1flag = flag;
+	OCR0B=dutyservo = c;
 	
     /* loop */
 	while (1) {
@@ -127,6 +140,7 @@ int main(void)
 		uint8_t dutyServoAD = (uint8_t)read_ADC10(2);
 		// do mappings and scalings
 		// servo requires more then one timer overflow -- non atomic,
+        pwm_set_duty(dutyEngineAD);  //enters fast PWM duty directly
 		// now handle Servo: linear transmission ad to duty
 		setServoDuties(dutyServoAD,&c, &flag);
 
@@ -146,6 +160,58 @@ int main(void)
 	}
 	pwm_stop();  // never to be reached :-)
 	
+}
+static void
+pwm_init(void)
+{
+    DDRB |= _BV(PB0) | _BV(PB1)| _BV(PB2); // set PWM pin as OUTPUT
+    TCCR0A |= _BV(WGM01)|_BV(WGM00); // set timer mode to FAST PWM
+    TCCR0A |= _BV(COM0A1); // connect PWM signal to pin (AC0A => PB0)
+	OCR0B=60;
+}
+
+/* When timer is set to Fast PWM Mode, the frequency can be
+calculated using equation: F = F_CPU / (N * 256) 
+Possible frequencies (@1.2MHz):
+ -> F(N_1) = 4.687kHz
+ -> F(N_8) = 585Hz
+ -> F(N_64) = 73Hz
+ -> F(N_256) = 18Hz
+ -> F(N_1024) = 4Hz */
+static void
+pwm_set_frequency(uint32_t N)
+{
+    s=(TCCR0B & ~((1<<CS02)|(1<<CS01)|(1<<CS00))) | N;
+    TCCR0B = (TCCR0B & ~((1<<CS02)|(1<<CS01)|(1<<CS00))) | N; // set prescaler
+	 // Overflow Interrupt erlauben
+	 // and delete first hidden occurence before sei 
+    TIMSK0 |= (1<<TOIE0);
+	sei();
+}
+
+static void
+pwm_set_duty(uint8_t duty)
+{
+
+    OCR0A = duty; // set the OCRnx
+}
+
+static void
+pwm_stop(void)
+{
+
+    TCCR0B &= ~((1<<CS02)|(1<<CS01)|(1<<CS00)); // stop the timer
+	cli();
+}
+
+// active waiting not to painful, as the main action is interrupt driven preemptive
+// and there is nothing left to do 
+
+void Delay(unsigned int deli)
+{
+	//volatile unsigned int del = 16000;
+	volatile unsigned int del = deli;
+	while(del--);
 }
 
 void initADC()
@@ -193,7 +259,7 @@ uint16_t read_ADC10(uint8_t channel)
 		result += (uint16_t)ADCH;			// Wandlungsergebnisse dazuaddieren
 	}							// ADCW ist eine Kombination aus ADCL und ADCH -> 16Bit
 	ADCSRA &= ~(1<<ADEN);		// ADC ausschalten
-	result >>= 2;				// Mittelwert bilden , 2^x, deshalb einfaches schieben
+	result >>= 2;				// Mittelwert bilden , divide by n, 2^x, deshalb einfaches schieben
 	
 	return result;  // und Ergebnis zurueck...
 }
