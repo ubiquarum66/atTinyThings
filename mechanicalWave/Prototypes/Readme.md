@@ -53,3 +53,23 @@ and glue a first prototype came into play:
 ![](car.png)
 ![](all_together_crude.png)
 
+## Elektrodes for buzzing error sound
+
+out of brass tubing, two rings were cut by a lathe to serve as elektrodes at the tip of the lever
+
+![](rings_lathe.png)![](rings_done.png)
+
+## Put it all together 
+
+LED's and Oil painting were combined to create juggling clown background
+
+![](clown_and_wiring.png)
+
+and mounted on a wood shingle, the first functional prototype came into life:
+
+![](test_with_clown.png)
+
+remining issues were to transfer this to a nice plate of wood, replace the lever by a 3d print part, 
+and hide the wiring harness in some tubing....
+
+

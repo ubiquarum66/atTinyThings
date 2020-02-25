@@ -26,3 +26,17 @@ in the middle, the transistor for the non-muC direct direction reversal at the p
 
 ![](first_soldering)
 
+## the finished 'product'
+
+after application of denoising capacitors at the engine, the final build of 
+the control unit is shown in all its ugliness :-)
+
+![](buildup.png)
+
+## the final layout
+
+and its professional svg layout:
+
+![](endlayout.png)
+
+That's it!
