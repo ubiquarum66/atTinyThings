@@ -1,6 +1,12 @@
 # atTinyThings
 small projects for AtTiny Atmel microcontrollers
 
+## DC Engine (german)
+
+a small collection of (german) notes I made regarding small RC engines...
+
+![](DCEngines_german(motor_wirkung.png)
+
 ## Mechanical Wave Game
 
 a small game, made as a present;

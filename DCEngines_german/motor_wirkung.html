@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>motor_wirkung</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="motorfunktion-dc-motor-mit-permanentmagnet-stator">Motorfunktion DC Motor mit Permanentmagnet Stator:</h1>
+<h2 id="strom-bestimmt-moment">Strom bestimmt Moment</h2>
+<ul>
+<li>der Strom im Rotor erzeugt ein Drehmoment durch die Lorentzkraft auf die Elektronen, die der Strom durch das Magnetfeld bewegt.</li>
+<li>Der Commutator polt den Strom immer im richtigen Moment so um, dass das Drehmoment die Richtung beibehält. Dazu sind auf dem Rotor unterschiedliche Wicklungen mit Segmenten auf einem Schleifring verbunden, der von Bürsten oder Kohlen mit der Stromversorgung (Treiber) verbunden wird.</li>
+</ul>
+<h2 id="was-bestimmt-den-strom-elektrisches-verhalten">was bestimmt den Strom? – elektrisches Verhalten</h2>
+<h3 id="motor-dreht-noch-nicht-oder-wird-abgestoppt">Motor dreht noch nicht oder wird abgestoppt:</h3>
+<ul>
+<li>Motor ist eine DC Schaltung, im Prinzip ein Kurzschluss, der Strom ergibt sich aus I = U/R, R ein paar Ohm, wobei aber U ca U batt - (2- 2.5) V durch die Halbleiter in den Treibern.</li>
+<li>es ergeben sich “Bratströme für den Motor” , wenn die Treiber nicht abschalten, von etwa ein bis ein paar Ampere.</li>
+</ul>
+<h3 id="motor-dreht-sich">Motor dreht sich</h3>
+<ul>
+<li>Wenn der Motor sich dreht, baut sich durch das Induktionsgesetz im Wicklungsdraht (der sich ja im Feld bewegt) eine Gegenspannung zur äuseren Spannung auf. Diese Gegenspannung ist proportional zur Drehzahl. (je schneller, je größer), und wird auch “back emf” genannt.</li>
+<li>Die Wicklung sieht jetzt nur noch die Spannung U - K_bemf<em>w - R</em>I, wenn w die Drehzahl ist.</li>
+<li>es wird eine Drehzahl geben, bei der K_bemf*w = U ist, das ist die maximale (Freilauf-)Drehzahl im reibungsfreien Motor, dann geht der Strom gegen Null.</li>
+</ul>
+<h2 id="was-bestimmt-die-drehzahl-mechanisches-verhalten">was bestimmt die Drehzahl? – mechanisches Verhalten</h2>
+<h3 id="momente-am-motor-als-drehendes-teil">Momente am Motor als drehendes Teil</h3>
+<ul>
+<li>Der Motor sieht das Drehmoment der Wicklung - proportional dem mittleren Strom</li>
+<li>der Motor sieht Drehmomentspitzen, proportional den Stromspitzen.</li>
+<li>Der Motor sieht eine Reibung, meist konstant plus proportional der Drehzahl w</li>
+<li>Der Motor sieht seine Arbeitslast, das Wunschmoment “Autoantrieb”, “Last anheben” etc.</li>
+</ul>
+<h3 id="motor-ohne-last">Motor ohne Last</h3>
+<ul>
+<li>Der Motor dreht mit der Drehzahl, bei der die mechanische und die elektrische Gleichung erfüllt sind,</li>
+<li>d.h., die Spannung U - U_bemf(w) erzeugt einen Strom, der gerade das Reibmoment M_R erzeugt.</li>
+<li>Da U_bemf von w abhängt, und oft auch das Reibmoment ein wenig, ergibt sich so eine Drehzahl unterhalb der max. Drehzahl.</li>
+<li>Die angelegte Spannung wird nicht exakt ausgeglichen, es fliesst ein wenig, aber nicht viel Strom.</li>
+</ul>
+<h3 id="motor-mit-last">Motor mit Last</h3>
+<ul>
+<li>Hier ist der Strom praktisch vorgegeben, (Drehmoment proportional dem fließenden Strom), durch das Drehmoment der Last plus das kleine Reibmoment,</li>
+<li>Es stellt sich also die Drehzahl ein,</li>
+<li>bei der der vom Drehmoment geforderte Strom fliesst (merke U_bemf proportional Drehzahl, Strom aus (U-U_bemf)),</li>
+</ul>
+<h2 id="eine-gute-näherung">eine gute Näherung</h2>
+<figure>
+<img src="motor_wirkung.png" alt="" /><figcaption>Kennlinienfeld</figcaption>
+</figure>
+<ul>
+<li>ist eine Gerade Strom ( ca. gleich Moment) über Drehzahl,</li>
+<li>oben links (w=0) Kurzschlussstrom (gleich Maxmoment, aber auch Max-Heizung)</li>
+<li>unten rechts (w_LL , I =0) ideale Freilaufdrehzahl</li>
+<li>Messpunkt für unten rechts ist die reale Leerlaufdrehzahl und der reale LL-Strom.</li>
+<li>dann kann man die Gerade durch die zwei Punkte peilen. Den ersten Punkt darf man aber nur kurz messen, sonst nächster Motor fällig :-)</li>
+</ul>
+<h2 id="nichtanlauf">Nichtanlauf</h2>
+<ul>
+<li>elektrisch
+<ul>
+<li>Treiber oder Spannungsquelle können den Kurzschlussstrom nicht liefern
+<ul>
+<li>und brechen stark ein,</li>
+<li>damit: Haftreibung wird nicht überschritten</li>
+</ul></li>
+<li>kann auch ganz kurz sein, Einschaltflanke –&gt; ELKO (s.u.)</li>
+<li>Treiber und muC durch Motorstörungen verwirrt ( dann dreht er aber schon)</li>
+</ul></li>
+<li>mechanisch
+<ul>
+<li>Motor hat starke Haftreibung Bürsten-Kommutator (billig, aber normal)</li>
+<li>Motor hat starke Reibung im Getriebe (wird aber über Getriebe runtertransformiert…),</li>
+<li>Motor bleibt - bei wenigen Kommutatorpolen und schmalen Bürsten/Kohlen - in einer Situation stehen,
+<ul>
+<li>bei der die Wicklung nicht richtig kontaktiert wird. (billig, aber normal)</li>
+</ul></li>
+<li>Wicklungen falsch angesteuert werden</li>
+</ul></li>
+</ul>
+<p>Gegen die mechanischen Probleme ist kein Kraut gewachsen,</p>
+<ul>
+<li>ausser vielleicht im Startfall die PWM Frequenz (nicht Tastverhältnis) langsam zu machen, um</li>
+<li>Stromspitzen zum Losreissen zu erzeugen.</li>
+<li>Aber da hat man eh ca 100 % PWM drin, d.h., da ist nicht viel mit Spitzen.</li>
+<li>anderen Motor (evtl. teurer, oder anderes Exemplar) probieren</li>
+</ul>
+<p>Gegen die elektrischen Probleme:</p>
+<ul>
+<li>andere Treiber (=höherer Strom) (es gibt auch Vorschläge, zwei ICs pin-pin übereinander zu löten, und parallel zu beschalten, aber da überblicke ich nicht, was da Bauteiltoleranzen ausrichten).</li>
+<li>Vermessen von Strom und Spannung - Schaltungsfehler?</li>
+<li>Entstörung Motor, <img src="denoise.png" alt="Denoise" /></li>
+<li>grosser Elko zwischen + und - des Treiber - ICs als Energiepuffer (nahe beim Chip!) <img src="buffer.png" alt="Denoise" /> <img src="buffer2.png" alt="Denoise" /></li>
+<li>was hier immer gut ist (!) ist ein U und I regelbares Netzteil (z.B 0-40V, bis zu 3 A) mit Stromanzeige.</li>
+<li>man stellt vorher(!) eine Stromgrenze von ca 0.6 A ein, und dreht dann die Spannung hoch, um zu schauen,
+<ul>
+<li>bei welchem Strom der Motor losläuft.</li>
+<li>besser als DC wird PWM nie werden :-)</li>
+</ul></li>
+</ul>
+</body>
+</html>
