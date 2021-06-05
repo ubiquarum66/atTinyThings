@@ -30,9 +30,12 @@ Due to the limited RAM Space the signal code is fetched from two ROM arrays. The
  
 ### Bit pattern to signal
 
-+ A 1 in the bit pattern is a long morse "toot" , a 0 is a short "peep" , thus, e.g. 0101 is "toot peep toot peep", 
++ A 1 in the bit pattern is a long morse "toot" , a 0 is a short "peep" , thus, e.g. 0101 is "peep toot peep toot", 
 + the pauses between the bits are automatic, 
 + the pauses between the letters are automatic,
 + the pauses between words and sentences are requested by pause commands (len>14)
++ the power of the muC managed to go directly to 3.3V speaker in the breadboard, but failed in the soldered circuitry,
++ thus I designed it out, bad pitty....half the fun, should have done a transistor circuit before.
++ 
 
 
