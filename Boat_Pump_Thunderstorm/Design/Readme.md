@@ -1,5 +1,8 @@
 # Design
 
+![First Sketch](sketch.png)
+
+
 ![DSC00591.JPG](DSC00591.JPG)
                 
 ![DSC00595.JPG](DSC00595.JPG)
@@ -23,3 +26,5 @@
 ![DSC00612.JPG](DSC00612.JPG)
                 
 ![DSC00622.JPG](DSC00622.JPG)
+
+![wiring Diagram](wiring.png)
